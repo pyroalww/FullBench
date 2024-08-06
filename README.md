@@ -14,6 +14,8 @@ While basic benchmarks can give you a general idea of your system's speed, FullB
 
 FullBench answers these questions and more by employing a diverse suite of tests designed to push your hardware to its limits.
 
+![image](https://github.com/user-attachments/assets/e871094c-0f76-4629-b027-e908d882fa40)
+
 ## Dissecting the Features
 
 ### 1. A Benchmarking Odyssey
