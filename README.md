@@ -86,6 +86,8 @@ FullBench embarks on a comprehensive evaluation journey, testing these key areas
 
 * **Graphics:**
     * **OpenGL Rendering:**  Utilizes the OpenGL API to render a series of 3D objects, assessing your system's graphical rendering capabilities and potential for running graphically demanding applications and games.
+    * 
+![benchmark_results](https://github.com/user-attachments/assets/7f2587d8-435f-43b2-b919-c1f86248be07)
 
 ### 2. Results that Speak Volumes
 
