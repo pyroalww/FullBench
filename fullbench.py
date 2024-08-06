@@ -3,16 +3,16 @@
 # M.I.T. License
 # https://pyrollc.com.tr
 # FullBench 
-# v1.0.3 
+# v1.0.4
 
 # ===========================
 # - Fixed OpenCL
 # - Fixed Pycuda skip for AMD GPUs
 # - Reduced GPU load
 # - Added HTML Result
+# - Machine Learning: Reduced load .50
 
-
-
+print("Importing libs.")
 import psutil
 import cpuinfo
 import GPUtil
@@ -42,14 +42,14 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 import random
-
+    
 try:
     import pycuda.driver as cuda
     import pycuda.autoinit
     CUDA_AVAILABLE = True
 except ImportError:
     CUDA_AVAILABLE = False
-
+print("Benchmark started. This process takes 30 minutes to 1 hour depending on your hardware. You will be notified when the process is complete.")
 class AdvancedBench:
     def __init__(self):
         self.scores = {
@@ -555,7 +555,7 @@ class AdvancedBench:
 
     def ml_benchmark(self):
         try:
-            print("Machine Learning Benchmarking...")
+            print("Machine Learning Benchmarking... | ALERT: This operation may take a long time. Really long if your hardware does not have an AI processing module.")
 
             from sklearn.datasets import make_classification
             from sklearn.model_selection import train_test_split
@@ -564,12 +564,12 @@ class AdvancedBench:
             from sklearn.neural_network import MLPClassifier
 
             # Generate a large dataset
-            X, y = make_classification(n_samples=1000000, n_features=100, n_informative=50, n_redundant=50, random_state=42)
+            X, y = make_classification(n_samples=100000, n_features=50, n_informative=25, n_redundant=25, random_state=42)
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
             # Random Forest
             start = time.time()
-            rf = RandomForestClassifier(n_estimators=100, random_state=42)
+            rf = RandomForestClassifier(n_estimators=50, random_state=42)  # Tahmin edici sayısını azaltın
             rf.fit(X_train, y_train)
             rf.predict(X_test)
             end = time.time()
@@ -579,7 +579,7 @@ class AdvancedBench:
 
             # Logistic Regression
             start = time.time()
-            lr = LogisticRegression(random_state=42, max_iter=1000)
+            lr = LogisticRegression(random_state=42, max_iter=500)
             lr.fit(X_train, y_train)
             lr.predict(X_test)
             end = time.time()
@@ -589,7 +589,7 @@ class AdvancedBench:
 
             # Neural Network
             start = time.time()
-            nn = MLPClassifier(hidden_layer_sizes=(100, 50), random_state=42, max_iter=100)
+            nn = MLPClassifier(hidden_layer_sizes=(50, 25), random_state=42, max_iter=50)
             nn.fit(X_train, y_train)
             nn.predict(X_test)
             end = time.time()
